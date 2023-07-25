@@ -28,15 +28,22 @@ public class CategoryRepository
     }
 
     // Create a method GetByID
-    public Category? GetByID(Guid id)
+    public Category GetByID(Guid id)
     {
-        return _context.Categories.Find(id);
+        return _context.Categories.Find(id) ?? throw new InvalidOperationException("La categoría no fue encontrada.");
     }
 
     // Create a method Insert
     public void Insert(Category category)
     {
         _context.Categories.Add(category);
+    }
+
+
+    // Create a method Update
+    public void Update(Category category)
+    {
+        _context.Entry(category).State = EntityState.Modified;
     }
 
     // Create a method Delete
@@ -48,12 +55,6 @@ public class CategoryRepository
             _context.Categories.Remove(category);
         }
         // Optionally, you can throw an exception or log a message if the category is not found.
-    }
-
-    // Create a method Update
-    public void Update(Category category)
-    {
-        _context.Entry(category).State = EntityState.Modified;
     }
 
     // Create a method Save

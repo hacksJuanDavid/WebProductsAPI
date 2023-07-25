@@ -14,14 +14,27 @@ namespace WEBAPI.Tests
             var task = new Models.Task
             {
                 TaskID = Guid.NewGuid(),
-                NameTask = "Task 2",
-                DescriptionTask = "Description 2",
+                NameTask = "Task test",
+                DescriptionTask = "Description test",
                 PriorityTask = 1,
                 DateTask = DateTime.UtcNow,
                 Category = new Category(),
-                ResumTask = "Resum 2"
+                ResumTask = "Resum test"
             };
             taskRepository.Insert(task);
+            taskRepository.Save();
+
+            var task2 = new Models.Task
+            {
+                TaskID = Guid.NewGuid(),
+                NameTask = "Task test 1",
+                DescriptionTask = "Description test 1",
+                PriorityTask = 1,
+                DateTask = DateTime.UtcNow,
+                Category = new Category(),
+                ResumTask = "Resum test 1"
+            };
+            taskRepository.Insert(task2);
             taskRepository.Save();
         }
 
@@ -32,10 +45,19 @@ namespace WEBAPI.Tests
             var category = new Category
             {
                 CategoryID = Guid.NewGuid(),
-                NameCategory = "Category 2",
-                DescriptionCategory = "Description 2"
+                NameCategory = "Category test",
+                DescriptionCategory = "Description test"
             };
             categoryRepository.Insert(category);
+            categoryRepository.Save();
+
+            var category2 = new Category
+            {
+                CategoryID = Guid.NewGuid(),
+                NameCategory = "Category test 1",
+                DescriptionCategory = "Description test 1"
+            };
+            categoryRepository.Insert(category2);
             categoryRepository.Save();
         }
     }

@@ -28,15 +28,21 @@ public class TaskRepository
     }
 
     // Create a method GetByID
-    public Models.Task? GetByID(Guid id)
+    public Models.Task GetByID(Guid id)
     {
-        return _context.Tasks.Find(id);
+        return _context.Tasks.Find(id) ?? throw new InvalidOperationException("La tarea no fue encontrada.");
     }
 
     // Create a method Insert
     public void Insert(Models.Task task)
     {
         _context.Tasks.Add(task);
+    }
+
+    // Create a method Update
+    public void Update(Models.Task task)
+    {
+        _context.Entry(task).State = EntityState.Modified;
     }
 
     // Create a method Delete
@@ -48,13 +54,6 @@ public class TaskRepository
             _context.Tasks.Remove(task);
         }
         // Optionally, you can throw an exception or log a message if the task is not found.
-    }
-
-
-    // Create a method Update
-    public void Update(Models.Task task)
-    {
-        _context.Entry(task).State = EntityState.Modified;
     }
 
     // Create a method Save

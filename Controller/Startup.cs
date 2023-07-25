@@ -34,7 +34,7 @@ namespace WEBAPI.Controllers
             app.UseRouting();
 
             // Add task and category using the class Test
-            using (var scope = app.ApplicationServices.CreateScope())
+            /*using (var scope = app.ApplicationServices.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<ContextAplication>();
 
@@ -44,6 +44,7 @@ namespace WEBAPI.Controllers
                 // Insertar categorías
                 Test.InsertCategory(context);
             }
+            */
 
             app.UseEndpoints(endpoints =>
             {
