@@ -39,6 +39,14 @@ DELETE /api/Category/{id}
 
 Create a Web Api with .Net Core 7.0
 
+## Create a minimal web api
+
+## 1. Create a new project
+
+```bash
+    dotnet new web
+```
+
 ## Description
 
 This is a simple Web Api project that uses .Net Core 7.0. It is a simple project that can be used as a starting point for a new project.
